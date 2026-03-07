@@ -109,5 +109,22 @@ public class City implements java.io.Serializable, Comparable<City> {
     public int compareTo(City o) {
         return this.name.compareTo(o.getName());
     }
+
+    @Override
+    public String toString(){
+        return "City{" +
+                "id=" + id +
+                "name=" + name +
+                "coordinates=" + coordinates +
+                "creationDate=" + creationDate +
+                "area=" + area +
+                "population=" + population +
+                "metersAboveSeaLevel=" + metersAboveSeaLevel +
+                "climate=" + climate +
+                "government=" + government +
+                "standardOfLiving=" + standardOfLiving +
+                "governor=" + governor +
+                "}";
+    }
 }
 
