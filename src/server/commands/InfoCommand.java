@@ -1,0 +1,30 @@
+package server.commands;
+
+import common.Response;
+import common.Request;
+import server.CollectionManager;
+
+public class InfoCommand implements Command {
+    private CollectionManager collectionManager;
+
+    public InfoCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public String getName(){
+        return "info";
+    }
+
+    @Override
+    public String getDescription(){
+        return "returns info about a collection";
+    }
+
+    @Override
+    public Response execute(Request request){
+        String result = collectionManager.info();
+        Response response = new Response(true,result);
+        return response;
+    }
+}

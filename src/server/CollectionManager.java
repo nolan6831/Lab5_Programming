@@ -51,9 +51,13 @@ public class CollectionManager {
         for (int i = 0; i < this.collection.size(); i++){
             City currentCity = this.collection.get(i);
             if (currentCity.getId().equals(id)){
-                newCity.setId
+                newCity.setId(currentCity.getId());
+                newCity.setCreationDate(currentCity.getCreationDate());
+                this.collection.set(i,newCity);
+                return true;
             }
         }
+        return false;
     }
 
     public boolean removeById(Long id){ // needs an argument
@@ -82,20 +86,46 @@ public class CollectionManager {
         }
     }
 
-    public void reorder(){
-
+    public boolean reorder(){
+        java.util.Collections.reverse(this.collection);
+        return true;
     }
 
-    public void removeAllByGovernment(common.Government government){ // needs an argument
-
+    public boolean removeAllByGovernment(common.Government government){ // needs an argument
+        boolean isRemoved = false;
+        for (int i = this.collection.size() - 1; i>= 0; i--){
+            City currentCity = this.collection.get(i);
+            if (currentCity.getGovernment() == government){
+                this.collection.remove(i);
+                isRemoved = true;
+            }
+        }
+        return isRemoved;
     }
 
     public String groupCountingById(){
-        return "";
+        String result = "";
+
+        for (int i = 0; i < this.collection.size();i++){
+            City currentCity = this.collection.get(i);
+            result = result + "Group with ID " + currentCity.getId() + " contains 1 element\n";
+        }
+        return result;
     }
 
     public String filterStartsWithName(String name){ // needs an argument
-        return "";
+        String result = "";
+
+        for (int i = 0; i < this.collection.size(); i++){
+            City currentCity = this.collection.get(i);
+            if (currentCity.getName().startsWith(name)){
+                result = result + currentCity.toString() + "\n";
+            }
+        }
+        if (result.isEmpty()){
+            return "Nothing found";
+        }
+        return result;
     }
 }
 
