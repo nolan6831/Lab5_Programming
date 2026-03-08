@@ -88,7 +88,6 @@ public class Asker {
         }
     }
 
-
     public Integer readPopulation() {
         while (true) {
             String input = console.readLine("Введите население (целое число > 0): ");

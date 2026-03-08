@@ -1,5 +1,6 @@
 package server.commands;
 
+import common.City;
 import common.Request;
 import common.Response;
 import server.CollectionManager;
@@ -13,9 +14,9 @@ public class AddCommand implements Command {
 
     @Override
     public Response execute(Request request){
-        Response city = this.collectionManager.getCityArgument();
-        city.add(city);
-        Response result = new Resonse(true,city);
+        City city = request.getCityArgument();
+        this.collectionManager.add(city);
+        Response result = new Response(true,"элемент добавлен");
         return result;
     }
 
@@ -26,7 +27,7 @@ public class AddCommand implements Command {
 
     @Override
     public String getDescription(){
-        return "adds an element to a collection";
+        return "добавляет элемент в коллекцию";
     }
 
 }

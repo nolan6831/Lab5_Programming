@@ -31,9 +31,9 @@ public class CollectionManager {
     }
 
     public String info(){
-        return "Vector: " + this.collection.getClass().getName() +
-                "\nCreation date: " + this.creationDate.toString() +
-                "\nAmount of elements: " + this.collection.size();
+        return "вектор: " + this.collection.getClass().getName() +
+                "\nдата создания: " + this.creationDate.toString() +
+                "\nколичество элементов: " + this.collection.size();
     }
 
     public String show(){
@@ -108,7 +108,7 @@ public class CollectionManager {
 
         for (int i = 0; i < this.collection.size();i++){
             City currentCity = this.collection.get(i);
-            result = result + "Group with ID " + currentCity.getId() + " contains 1 element\n";
+            result = result + "группы по ID " + currentCity.getId() + " \n";
         }
         return result;
     }
@@ -123,7 +123,7 @@ public class CollectionManager {
             }
         }
         if (result.isEmpty()){
-            return "Nothing found";
+            return "найдено ничего";
         }
         return result;
     }

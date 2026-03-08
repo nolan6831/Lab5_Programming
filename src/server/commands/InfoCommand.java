@@ -18,7 +18,7 @@ public class InfoCommand implements Command {
 
     @Override
     public String getDescription(){
-        return "returns info about a collection";
+        return "возвращает информацию о коллекции";
     }
 
     @Override

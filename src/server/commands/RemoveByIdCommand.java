@@ -4,27 +4,26 @@ import common.Response;
 import common.Request;
 import server.CollectionManager;
 
-public class ClearCommand implements Command {
+public class RemoveByIdCommand implements Command {
     private CollectionManager collectionManager;
 
-    public ClearCommand(CollectionManager collectionManager){
+    public RemoveByIdCommand(CollectionManager collectionManager){
         this.collectionManager = collectionManager;
     }
 
     @Override
     public Response execute(Request request){
-        collectionManager.clear();
-        return new Response(true,"коллекция очищена");
+        String text = request.getStringArgument();
+
     }
 
-    @Override
     public String getName(){
-        return "clear";
+        return "remove_by_id";
     }
 
     @Override
     public String getDescription(){
-        return "чистит коллекцию";
+        return "удаляет элемент в коллекции";
     }
 
 }
