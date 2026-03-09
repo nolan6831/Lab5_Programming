@@ -1,13 +1,14 @@
 package server.commands;
 
+import common.City;
 import common.Response;
 import common.Request;
 import server.CollectionManager;
 
-public class RemoveByIdCommand implements Command {
+public class UpdateIdCommand implements Command {
     private CollectionManager collectionManager;
 
-    public RemoveByIdCommand(CollectionManager collectionManager){
+    public UpdateIdCommand(CollectionManager collectionManager){
         this.collectionManager = collectionManager;
     }
 
@@ -15,27 +16,26 @@ public class RemoveByIdCommand implements Command {
     public Response execute(Request request){
         String arg = request.getStringArgument();
         Long id = Long.parseLong(arg);
+        City newCity = request.getCityArgument();
         Response result;
-        boolean isRemoved;
-
-        isRemoved = this.collectionManager.removeById(id);
-        if (isRemoved){
-            result = new Response(true,"городишка удален");
+        boolean isUpdated = this.collectionManager.updateId(id,newCity);
+        if(isUpdated){
+            result = new Response(true, "id обновлен");
             return result;
         }
-        else{
-            result = new Response(false,"город с таким айди не найден");
+        else {
+            result = new Response(false, "город с таким id не найден");
             return result;
         }
     }
+
     @Override
     public String getName(){
-        return "remove_by_id";
+        return "update_id_command";
     }
 
     @Override
     public String getDescription(){
-        return "удаляет элемент в коллекции";
+        return "обновляет id";
     }
-
 }
