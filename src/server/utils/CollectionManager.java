@@ -6,15 +6,20 @@ public class CollectionManager {
     private java.util.Vector<City> collection;
     private java.time.LocalDateTime creationDate;
     private Long currentId;
+    private Long maxId = 0L;
 
 
     public CollectionManager(java.util.Vector<City> collection){
         this.collection = collection;
         this.creationDate = java.time.LocalDateTime.now();
-        this.currentId = collection.stream()
-                .mapToLong(City::getId)
-                .max()
-                .orElse(0L) + 1;
+        for (int i = 0; i < collection.size(); i++) {
+            City currentCity = collection.get(i);
+            // Если ID текущего города больше, чем наш сохраненный максимум
+            if (currentCity.getId() > maxId) {
+                maxId = currentCity.getId(); // Обновляем максимум
+            }
+        }
+        this.currentId = maxId + 1;
     }
 
     public java.util.Vector<City> getCollection(){
