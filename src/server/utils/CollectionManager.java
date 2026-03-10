@@ -1,4 +1,4 @@
-package server;
+package server.utils;
 
 import common.City;
 
@@ -53,7 +53,7 @@ public class CollectionManager {
 
     public void add(City city){ // needs and argument
         city.setId(currentId);
-        currentId++;
+        currentId = currentId + 1;
         city.setCreationDate(java.time.LocalDateTime.now());
         this.collection.add(city);
     }

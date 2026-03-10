@@ -2,7 +2,7 @@ package server.commands;
 
 import common.Request;
 import common.Response;
-import server.CommandManager;
+import server.utils.CommandManager;
 
 public class HelpCommand implements Command {
     private final CommandManager commandManager;

@@ -2,8 +2,7 @@ package server.commands;
 
 import common.Request;
 import common.Response;
-import server.CollectionManager;
-import common.Government;
+import server.utils.CollectionManager;
 
 public class RemoveAllByGovernmentCommand implements Command{
     private CollectionManager collectionManager;

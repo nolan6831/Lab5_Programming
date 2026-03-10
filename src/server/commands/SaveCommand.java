@@ -2,7 +2,7 @@ package server.commands;
 
 import common.Request;
 import common.Response;
-import server.CollectionManager;
+import server.utils.CollectionManager;
 import server.utils.FileManager;
 
 public class SaveCommand implements Command {

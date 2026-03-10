@@ -3,7 +3,7 @@ package server.commands;
 import common.City;
 import common.Request;
 import common.Response;
-import server.CollectionManager;
+import server.utils.CollectionManager;
 
 public class AddCommand implements Command {
     private CollectionManager collectionManager;
