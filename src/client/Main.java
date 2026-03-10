@@ -37,6 +37,7 @@ public class Main {
         commandManager.register("group_counting_by_id", new GroupCountingByIdCommand(collectionManager));
         commandManager.register("filter_starts_with_name", new FilterStartsWithName(collectionManager));
         commandManager.register("help", new HelpCommand(commandManager));
+        commandManager.register("execute_script", new ExecuteScriptCommand(commandManager));
         ClientRun.runCli(commandManager);
     }
     //dsaasd

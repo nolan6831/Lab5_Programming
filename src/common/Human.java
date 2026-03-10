@@ -4,6 +4,7 @@ public class Human implements java.io.Serializable {
     private Long height; //Значение поля должно быть больше 0
 
     public Human(Long height) {
+        this.height = height;
     }
 
     public Long getHeight(){
