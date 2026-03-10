@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jline-3.27.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jline-3.27.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xpp3-1.1.4c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xstream-1.4.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
