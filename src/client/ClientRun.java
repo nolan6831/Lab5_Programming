@@ -55,10 +55,8 @@ public class ClientRun {
             System.out.println(response.getMessage());
 
             if (commandName.equals("exit") && response.getSuccess()) {
-                break;
+                System.exit(0);
             }
         }
     }
-
-
 }

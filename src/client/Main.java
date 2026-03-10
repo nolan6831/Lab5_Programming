@@ -30,7 +30,7 @@ public class Main {
         commandManager.register("remove_by_id", new RemoveByIdCommand(collectionManager));
         commandManager.register("clear", new ClearCommand(collectionManager));
         commandManager.register("save", new SaveCommand(collectionManager, fileManager));
-        //commandManager.register("exit", new ExitCommand());
+        commandManager.register("exit", new ExitCommand());
         commandManager.register("remove_first", new RemoveFirstCommand(collectionManager));
         commandManager.register("reorder", new ReorderCommand(collectionManager));
         commandManager.register("remove_all_by_government", new RemoveAllByGovernmentCommand(collectionManager));
