@@ -4,7 +4,9 @@ public class Coordinates implements java.io.Serializable {
     private int x;
     private Float y; //Максимальное значение поля: 709, Поле не может быть null
 
-    public Coordinates(int x, float y) {
+    public Coordinates(int x, Float y) {
+        this.x = x;
+        this.y = y;
     }
 
     public int getX(){
@@ -21,5 +23,9 @@ public class Coordinates implements java.io.Serializable {
 
     public void setY(Float y){
         this.y = y;
+    }
+    @Override
+    public String toString() {
+        return String.format("Coordinates{x=%d, y=%s}", x, y == null ? "null" : String.format("%.2f", y));
     }
 }

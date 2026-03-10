@@ -36,8 +36,15 @@ public class CollectionManager {
                 "\nколичество элементов: " + this.collection.size();
     }
 
-    public String show(){
-        return this.collection.toString();
+    public String show() {
+        if (collection.isEmpty()) {
+            return "Коллекция пуста.";
+        }
+        StringBuilder result = new StringBuilder();
+        for (City city : collection) {
+            result.append(city.toString()).append("\n");
+        }
+        return result.toString();
     }
 
     public void add(City city){ // needs and argument

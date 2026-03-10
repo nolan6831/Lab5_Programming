@@ -15,7 +15,9 @@ public class CommandManager {
     public void register(String commandName, Command command){
         this.commands.put(commandName, command);
     }
-
+    public java.util.HashMap<String, Command> getCommands() {
+        return commands;
+    }
     public Response executeCommand(Request request){
         String name = request.getCommandName();
         Command command = this.commands.get(name);
