@@ -57,6 +57,7 @@ public class ClientRun {
             if (commandName.equals("exit") && response.getSuccess()) {
                 System.exit(0);
             }
+            //dsasdas
         }
     }
 }

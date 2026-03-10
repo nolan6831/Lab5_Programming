@@ -39,4 +39,5 @@ public class Main {
         commandManager.register("help", new HelpCommand(commandManager));
         ClientRun.runCli(commandManager);
     }
+    //dsaasd
 }
