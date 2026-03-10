@@ -1,8 +1,8 @@
 package client;
 
 import common.City;
-import server.CollectionManager;
-import server.CommandManager;
+import server.utils.CollectionManager;
+import server.utils.CommandManager;
 import server.commands.*;
 import server.utils.FileManager;
 

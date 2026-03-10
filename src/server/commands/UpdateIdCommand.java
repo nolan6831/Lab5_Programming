@@ -3,7 +3,7 @@ package server.commands;
 import common.City;
 import common.Response;
 import common.Request;
-import server.CollectionManager;
+import server.utils.CollectionManager;
 
 public class UpdateIdCommand implements Command {
     private CollectionManager collectionManager;

@@ -3,7 +3,7 @@ package client;
 import common.City;
 import common.Request;
 import common.Response;
-import server.CommandManager;
+import server.utils.CommandManager;
 
 public class ClientRun {
     public static void runCli(CommandManager commandManager) {

@@ -2,7 +2,7 @@ package server.commands;
 
 import common.Response;
 import common.Request;
-import server.CollectionManager;
+import server.utils.CollectionManager;
 
 public class RemoveByIdCommand implements Command {
     private CollectionManager collectionManager;

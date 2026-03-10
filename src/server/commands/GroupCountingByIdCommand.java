@@ -2,7 +2,7 @@ package server.commands;
 
 import common.Request;
 import common.Response;
-import server.CollectionManager;
+import server.utils.CollectionManager;
 
 public class GroupCountingByIdCommand implements Command {
     private CollectionManager collectionManager;
