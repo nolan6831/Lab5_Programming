@@ -5,12 +5,16 @@ import common.City;
 public class CollectionManager {
     private java.util.Vector<City> collection;
     private java.time.LocalDateTime creationDate;
-    private Long currentId = 1L;
+    private Long currentId;
 
 
     public CollectionManager(java.util.Vector<City> collection){
         this.collection = collection;
         this.creationDate = java.time.LocalDateTime.now();
+        this.currentId = collection.stream()
+                .mapToLong(City::getId)
+                .max()
+                .orElse(0L) + 1;
     }
 
     public java.util.Vector<City> getCollection(){
