@@ -38,8 +38,9 @@ public class ConsoleReader {
                 return "";
             }
             return line;
+        } catch (org.jline.reader.UserInterruptException e) {
+            throw e;
         } catch (Exception e) {
-            e.printStackTrace();
             return "";
         }
     }

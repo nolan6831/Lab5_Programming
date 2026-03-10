@@ -14,7 +14,15 @@ public class RemoveByIdCommand implements Command {
     @Override
     public Response execute(Request request){
         String arg = request.getStringArgument();
-        Long id = Long.parseLong(arg);
+        if (arg == null || arg.trim().isEmpty()) {
+            return new Response(false, "ошибка: укажите id для удаления");
+        }
+        Long id;
+        try {
+            id = Long.parseLong(arg.trim());
+        } catch (NumberFormatException e) {
+            return new Response(false, "ошибка: некорректный формат id");
+        }
         Response result;
         boolean isRemoved;
 

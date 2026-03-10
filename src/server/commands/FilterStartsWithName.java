@@ -15,6 +15,9 @@ public class FilterStartsWithName implements Command{
     @Override
     public Response execute(Request request){
         String arg = request.getStringArgument();
+        if (arg == null) {
+            arg = "";
+        }
         String result = this.collectionManager.filterStartsWithName(arg);
         Response response = new Response(true,result);
         return response;

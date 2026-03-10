@@ -3,6 +3,7 @@ package client;
 import common.City;
 import common.Request;
 import common.Response;
+import org.jline.reader.UserInterruptException;
 import server.utils.CommandManager;
 
 public class ClientRun {
@@ -14,7 +15,13 @@ public class ClientRun {
         System.out.println("Добро пожаловать в программу упрапвления городами! Введите help для списка команд.");
 
         while (true) {
-            String input = console.readLine("> ");
+            String input;
+            try {
+                input = console.readLine("> ");
+            } catch (UserInterruptException e) {
+                System.out.println("\nИспользование Ctrl+C для выхода не предусмотрено. Введите 'exit' для завершения.");
+                continue;
+            }
             if (input == null) break;
             input = input.trim();
             if (input.isEmpty()) continue;

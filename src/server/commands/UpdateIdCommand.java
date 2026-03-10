@@ -15,7 +15,15 @@ public class UpdateIdCommand implements Command {
     @Override
     public Response execute(Request request){
         String arg = request.getStringArgument();
-        Long id = Long.parseLong(arg);
+        if (arg == null || arg.trim().isEmpty()) {
+            return new Response(false, "ошибка: укажите id для обновления");
+        }
+        Long id;
+        try {
+            id = Long.parseLong(arg.trim());
+        } catch (NumberFormatException e) {
+            return new Response(false, "ошибка: некорректный формат id");
+        }
         City newCity = request.getCityArgument();
         Response result;
         boolean isUpdated = this.collectionManager.updateId(id,newCity);

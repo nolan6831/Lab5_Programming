@@ -15,7 +15,15 @@ public class RemoveAllByGovernmentCommand implements Command{
     @Override
     public Response execute(Request request){
         String arg = request.getStringArgument();
-        common.Government gov = common.Government.valueOf(arg.toUpperCase());
+        if (arg == null || arg.trim().isEmpty()) {
+            return new Response(false, "ошибка: укажите вид правления (DESPOTISM, DEMOCRACY, etc.)");
+        }
+        common.Government gov;
+        try {
+            gov = common.Government.valueOf(arg.trim().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return new Response(false, "ошибка: недопустимый вид правления. Доступные: DESPOTISM, DEMOCRACY, ARISTOCRACY, OLIGARCHY, COMMUNISM");
+        }
         boolean isRemoved = this.collectionManager.removeAllByGovernment(gov);
 
         if(isRemoved){

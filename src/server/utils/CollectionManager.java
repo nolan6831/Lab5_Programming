@@ -129,7 +129,7 @@ public class CollectionManager {
 
         for (int i = 0; i < this.collection.size(); i++){
             City currentCity = this.collection.get(i);
-            if (currentCity.getName().startsWith(name)){
+            if (currentCity.getName() != null && currentCity.getName().startsWith(name)){
                 result = result + currentCity.toString() + "\n";
             }
         }
