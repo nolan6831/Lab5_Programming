@@ -4,6 +4,9 @@ import common.Request;
 import common.Response;
 import server.utils.CommandManager;
 
+/**
+ * показывает список команд
+ */
 public class HelpCommand implements Command {
     private final CommandManager commandManager;
 

@@ -4,6 +4,10 @@ import common.Response;
 import common.Request;
 import server.utils.CollectionManager;
 
+/**
+ * информация по коллекции
+ * @return
+ */
 public class InfoCommand implements Command {
     private CollectionManager collectionManager;
 

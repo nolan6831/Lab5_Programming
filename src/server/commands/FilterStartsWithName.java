@@ -4,6 +4,10 @@ import common.Request;
 import common.Response;
 import server.utils.CollectionManager;
 
+/**
+ * фильтрует города по имени
+ * @return отфильтрованный список городов
+ */
 public class FilterStartsWithName implements Command{
     private CollectionManager collectionManager;
 

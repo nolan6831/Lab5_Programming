@@ -5,6 +5,11 @@ import common.Request;
 import common.Response;
 import server.utils.CollectionManager;
 
+/**
+ * обращается к коллекции и добавляет элемент
+ * @return возвращает добавленный элемент
+ */
+
 public class AddCommand implements Command {
     private CollectionManager collectionManager;
 

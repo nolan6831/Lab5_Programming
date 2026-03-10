@@ -4,6 +4,9 @@ import common.Response;
 import common.Request;
 import server.utils.CollectionManager;
 
+/**
+ * удаляет первый элемент из спискуа
+ */
 public class RemoveFirstCommand implements Command{
     private CollectionManager collectionManager;
 

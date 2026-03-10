@@ -4,6 +4,9 @@ import common.Response;
 import common.Request;
 import server.utils.CollectionManager;
 
+/**
+ * удаляет город по предоставленному id
+ */
 public class RemoveByIdCommand implements Command {
     private CollectionManager collectionManager;
 

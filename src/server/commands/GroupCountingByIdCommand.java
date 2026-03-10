@@ -4,6 +4,10 @@ import common.Request;
 import common.Response;
 import server.utils.CollectionManager;
 
+/**
+ * группирует города по id
+ * @return список по одному id
+ */
 public class GroupCountingByIdCommand implements Command {
     private CollectionManager collectionManager;
 

@@ -3,6 +3,10 @@ package server.commands;
 import common.Request;
 import common.Response;
 
+/**
+ * принимает имя файла и записывает в кортеж. идет проверка на рекурсивный вызов скриптов
+ * @return возвращает статус "запущен", если нет рекурсии
+ */
 public class ExecuteScriptCommand implements Command{
     private static java.util.Vector<String> activeScripts = new java.util.Vector<>();
 
