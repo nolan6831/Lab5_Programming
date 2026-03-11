@@ -112,8 +112,10 @@ public class City implements java.io.Serializable, Comparable<City> {
 
     @Override
     public String toString() {
-        return String.format("City{id=%d, name='%s', coordinates=%s, creationDate=%s, area=%.2f, population=%d, metersAboveSeaLevel=%.2f, climate=%s, government=%s, standardOfLiving=%s, governor=%s}",
-                id, name, coordinates, creationDate, area, population, metersAboveSeaLevel, climate, government, standardOfLiving, governor);
+
+        return String.format("City{id=%d, name='%s', coordinates=%s, creationDate=%s, area=%s, population=%d, metersAboveSeaLevel=%s, climate=%s, government=%s, standardOfLiving=%s, governor=%s}",
+                id, name, coordinates, creationDate, String.valueOf(area), population, String.valueOf(metersAboveSeaLevel), climate, government, standardOfLiving, governor);
     }
+
 }
 

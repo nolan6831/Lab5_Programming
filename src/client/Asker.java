@@ -2,6 +2,8 @@ package client;
 
 import common.*;
 
+import java.math.BigDecimal;
+
 public class Asker {
     private final ConsoleReader console;
 
@@ -38,9 +40,14 @@ public class Asker {
                 x = Integer.parseInt(input);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка: введите целое число!");
+                if (input.matches("-?\\d+")) {
+                    System.out.println("Ошибка: слишком большое или маленькое число!");
+                } else {
+                    System.out.println("Ошибка: пожалуйста, введите целое число!");
+                }
             }
         }
+
 
         float y;
         while (true) {
@@ -53,13 +60,26 @@ public class Asker {
             }
             try {
                 y = Float.parseFloat(input);
+                if (Float.isInfinite(y) || Float.isNaN(y)) {
+                    System.out.println("Ошибка: слишком большое число!");
+                    continue;
+                }
+                // Проверка на антипереполнение (когда ввели 1e-999, и оно сжалось до 0.0)
+                if (y == 0.0f) {
+                    BigDecimal bd = new BigDecimal(input);
+                    // Если BigDecimal не равен нулю, значит мы потеряли данные при превращении в float
+                    if (bd.compareTo(BigDecimal.ZERO) != 0) {
+                        System.out.println("Ошибка: число слишком длинное или близко к нулю!");
+                        continue;
+                    }
+                }
                 if (y > 709f) {
                     System.out.println("Y должен быть не больше 709!");
                     continue;
                 }
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка: введите число!");
+                System.out.println("Ошибка: пожалуйста, введите число!");
             }
         }
         return new Coordinates(x, y);
@@ -77,13 +97,25 @@ public class Asker {
             }
             try {
                 double val = Double.parseDouble(input);
+                if (Double.isInfinite(val) || Double.isNaN(val)) {
+                    System.out.println("Ошибка: слишком большое число!");
+                    continue;
+                }
+                // Проверка на антипереполнение
+                if (val == 0.0) {
+                    BigDecimal bd = new BigDecimal(input);
+                    if (bd.compareTo(BigDecimal.ZERO) != 0) {
+                        System.out.println("Ошибка: число слишком длинное или близко к нулю!");
+                        continue;
+                    }
+                }
                 if (val <= 0) {
-                    System.out.println("Площадь должна быть положительной!");
+                    System.out.println("Площадь должна быть строго больше нуля!");
                     continue;
                 }
                 return val;
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка: введите число!");
+                System.out.println("Ошибка: пожалуйста, введите число!");
             }
         }
     }
@@ -105,7 +137,11 @@ public class Asker {
                 }
                 return val;
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка: введите целое число!");
+                if (input.matches("-?\\d+")) {
+                    System.out.println("Ошибка: слишком большое или маленькое число!");
+                } else {
+                    System.out.println("Ошибка: пожалуйста, введите целое число!");
+                }
             }
         }
     }
@@ -115,17 +151,29 @@ public class Asker {
         while (true) {
             String input = console.readLine("Введите высоту над уровнем моря (число): ");
             if (input == null) continue;
-            input=input.trim();
+            input = input.trim();
             if (input.isEmpty()){
                 System.out.println("Высота не может быть пустой!");
+                continue;
             }
             try {
-                return Float.parseFloat(input);
+                float val = Float.parseFloat(input);
+                if (Float.isInfinite(val) || Float.isNaN(val)) {
+                    System.out.println("Число по модулю слишком велико");
+                    continue;
+                }
+                if (val == 0.0f) {
+                    BigDecimal bd = new BigDecimal(input);
+                    if (bd.compareTo(BigDecimal.ZERO) != 0) {
+                        System.out.println("Ошибка: число слишком длинное или близко к нулю!");
+                        continue;
+                    }
+                }
+                return val;
             } catch (NumberFormatException e){
-                System.out.println("Введите число!");
+                System.out.println("Ошибка: пожалуйста, введите число!");
             }
         }
-
     }
 
 
@@ -195,7 +243,7 @@ public class Asker {
 
     public Human readGovernor() {
         Long height = null;
-        System.out.println("Введите рост губернатора (целое число >0, или пустую строку для null): ");
+        System.out.println("Введите рост губернатора (целое число > 0, или пустую строку для пропуска): ");
         while (true) {
             String input = console.readLine("");
             if (input == null) continue;
@@ -212,7 +260,11 @@ public class Asker {
                 height = val;
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка: введите целое число или оставьте пустую строку.");
+                if (input.matches("-?\\d+")) {
+                    System.out.println("Ошибка: слишком большое или маленькое число!");
+                } else {
+                    System.out.println("Ошибка: пожалуйста, введите целое число (или оставьте пустую строку).");
+                }
             }
         }
         return new Human(height);
